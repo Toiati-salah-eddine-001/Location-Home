@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Dashbord from "./Admin/Dashbord";
+import AuthProvider from "./AuthProvider";
+import Login from "./Logins Pages/Login";
+import SigneUp from "./Logins Pages/SigneUp";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ListeProduct from "./User/ListeProduct";
+import PrivateRouter from "./PrivateRouter";
+import SinglePage from "./User/SinglePage";
+import PaymentValidation from "./User/Validation";
+import Admine from "./Admin/Admine";
+import Update from "./Admin/Update";
+import ListeAnonce from "./Admin/ListeAnonce";
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/signup" element={<SigneUp/>}/>
+          <Route path="/Login" element={<Login/>}/>
+          <Route exact path="/" element={<ListeProduct/>}/>
+          <Route exact path="/ProductPage/:id" element={<SinglePage/>}/>
+          <Route path="/PaymentValidation" element={<PaymentValidation/>}/>
+          <Route path="/Dashboard/Update/:id" element={<Update/>}/>
+          <Route path="/Dashboard/ListLocation" element={<ListeAnonce/>}/>
+          <Route element={<PrivateRouter/>}>
+             <Route path="/Dashboard" element={<Admine/>}/>
+          </Route>
+      </Routes>
+    </BrowserRouter> 
+    </AuthProvider>
+    </>
   );
 }
-
-export default App;
