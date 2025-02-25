@@ -23,7 +23,7 @@ function ListeProduct() {
   
   useEffect(() => {
     if (GlobalData && GlobalData.length > 0) {
-      dispatch(AddData(GlobalData)); // تحديث الحالة
+      dispatch(AddData(GlobalData)); 
     }
   }, [GlobalData, dispatch]);
   return (

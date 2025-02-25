@@ -30,65 +30,26 @@ function FirstSectionListP() {
       </div>
 
       {/* Search Bar */}
-      <div className="w-full max-w-5xl bg-white rounded-3xl md:rounded-full shadow-lg p-2">
-        <form className="flex flex-col md:flex-row items-stretch">
-          {/* Location */}
-          <div className="flex-1 relative flex items-center px-4 py-2 w-full">
-            <Search className="h-5 w-5 text-gray-400 absolute left-4" />
-            <input
-              type="text"
-              placeholder="Où allez-vous ?"
-              className="w-full pl-10 pr-4 py-2 text-base md:text-lg placeholder:text-gray-400 focus:outline-none"
-            />
-          </div>
+      <div className="w-full max-w-5xl bg-white/95 backdrop-blur-sm rounded-3xl md:rounded-full shadow-xl p-3 border border-white/20">
+  <form className="flex flex-col md:flex-row items-center">
+    {/* Location - Enhanced */}
+    <div className="flex-1 relative flex items-center px-4 py-3 w-full group">
+      <Search className="h-5 w-5 text-[#FF7E5F] absolute left-6 transition-all duration-300 group-hover:scale-110" />
+      <input
+        type="text"
+        placeholder="Où allez-vous ?"
+        className="w-full pl-14 pr-6 py-3 text-base md:text-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF7E5F]/20 rounded-full bg-gray-50"
+      />
+    </div>
 
-          {/* Date Range */}
-          <div className="flex-1 border-t md:border-t-0 md:border-l border-gray-200 px-4 py-2 w-full">
-            <label htmlFor="date-depart" className=" text-gray-400">
-              Date de départ
-            </label>
-            <input
-              type="date"
-              id="date-depart"
-              placeholder="date depart"
-              className="w-full py-2 text-gray-600 focus:outline-none text-base md:text-lg"
-              defaultValue="2024-02-21"
-              onClick={(e) => e.target.showPicker()}
-            />
-          </div>
-          <div className="flex-1 border-t md:border-t-0 md:border-l border-gray-200 px-4 py-2 w-full">
-            <label htmlFor="date-retour" className=" text-gray-400">
-              Date de retour
-            </label>
-            <input
-              type="date"
-              id="date-retour"
-              placeholder="date retour"
-              className="w-full py-2 text-gray-600 focus:outline-none text-base md:text-lg"
-              defaultValue="2024-02-21"
-              onClick={(e) => e.target.showPicker()}
-            />
-          </div>
-
-          {/* Persons */}
-
-          <div className="flex-1 border-t md:border-t-0 md:border-l px-4 py-2 w-full ">
-            <select className="w-full p-2 text-gray-600 focus:outline-none appearance-none bg-transparent text-base md:text-lg text-center mt-4">
-              <option className="p-2 text-center">1 pers.</option>
-              <option className="p-5 w-90">2 pers.</option>
-              <option className="p-2">3 pers.</option>
-              <option className="p-2">4+ pers.</option>
-            </select>
-          </div>
-
-          {/* Search Button */}
-          <div className="w-full md:w-auto pt-2 md:pt-0 px-2">
-            <button className="w-full bg-[#FF7E5F] hover:bg-[#FEB47B] text-white rounded-full px-6 md:px-8 py-3 text-base md:text-lg font-semibold transition duration-300 ease-in-out mt-5">
-              Chercher
-            </button>
-          </div>
-        </form>
-      </div>
+    {/* Search Button - Enhanced */}
+    <div className="w-full md:w-auto pt-2 md:pt-0 px-3">
+      <button className="w-full bg-gradient-to-r from-[#FF7E5F] to-[#FEB47B] hover:from-[#FEB47B] hover:to-[#FF7E5F] text-white rounded-full px-8 md:px-10 py-3 text-base md:text-lg font-semibold transition-all duration-300 ease-in-out shadow-md hover:shadow-lg transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#FF7E5F]/50">
+        Chercher
+      </button>
+    </div>
+  </form>
+</div>
     </main>
   </div>
   )

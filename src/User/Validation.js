@@ -1,6 +1,7 @@
 import { CreditCard, Calendar, User, Mail, Lock ,CalendarCheck,Phone} from "lucide-react"
 import { useState } from "react";
 import useIndexedDB from "../useIndexedDB";
+import { useNavigate } from "react-router-dom";
 // import Image from "next/image"
 
 export default function PaymentValidation() {
@@ -8,6 +9,7 @@ export default function PaymentValidation() {
   const checkIn=localStorage.getItem('checkIn');
   const Totalprice=localStorage.getItem('TotalePrice');
   const Title=localStorage.getItem('Title');
+  const navigate = useNavigate()
 
   const { data, addData, isDbReady } = useIndexedDB('CC4', 'Orders');
   // Function definie le mois
@@ -40,6 +42,8 @@ export default function PaymentValidation() {
       return;
   }
     addData(OrdersData);
+    navigate('/User/AfterValidation')
+    
   }
   
   return (

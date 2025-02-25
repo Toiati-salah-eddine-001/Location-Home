@@ -10,6 +10,7 @@ import PaymentValidation from "./User/Validation";
 import Admine from "./Admin/Admine";
 import Update from "./Admin/Update";
 import ListeAnonce from "./Admin/ListeAnonce";
+import ReservationConfirmation from "./User/AfterVlaidation";
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/PaymentValidation" element={<PaymentValidation/>}/>
           <Route path="/Dashboard/Update/:id" element={<Update/>}/>
           <Route path="/Dashboard/ListLocation" element={<ListeAnonce/>}/>
+          <Route path="/User/AfterValidation" element={<ReservationConfirmation/>}/>
           <Route element={<PrivateRouter/>}>
              <Route path="/Dashboard" element={<Admine/>}/>
           </Route>

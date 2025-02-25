@@ -13,7 +13,8 @@ function Dashboard() {
   console.log(id);
   
 
-  const {updateData} = useIndexedDB('CC4','Location');
+  const { data ,updateData} = useIndexedDB('CC4','Location');
+  const dataUpdate = data.find((data)=>data.id === Number(id));
 
   const [Alldata, setAlldata] = useState({
     title: "",
@@ -120,7 +121,7 @@ function Dashboard() {
                   <input
                     type="text"
                     name="title"
-                    value={Alldata.title}
+                    value={dataUpdate.title}
                     onChange={handelchange}
                     placeholder="Enter a title for your listing"
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] h-14 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
@@ -137,7 +138,7 @@ function Dashboard() {
                     placeholder="Describe your property"
                     name="description"
                     onChange={handelchange}
-                    value={Alldata.description}
+                    value={dataUpdate.description}
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] min-h-36 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
                   />
                 </label>
@@ -167,7 +168,7 @@ function Dashboard() {
                   <input
                     type="text"
                     name="surface"
-                    value={Alldata.surface}
+                    value={dataUpdate.surface}
                     onChange={handelchange}
                     placeholder="Enter a street address"
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] h-14 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
@@ -183,7 +184,7 @@ function Dashboard() {
                   <input
                     type="text"
                     name="typeChambre"
-                    value={Alldata.typeChambre}
+                    value={dataUpdate.typeChambre}
                     onChange={handelchange}
                     placeholder="Enter a street address"
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] h-14 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
@@ -199,7 +200,7 @@ function Dashboard() {
                   <input
                     type="text"
                     name="Capacité"
-                    value={Alldata.Capacité}
+                    value={dataUpdate.Capacité}
                     onChange={handelchange}
                     placeholder="Enter a street address"
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] h-14 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
@@ -215,7 +216,7 @@ function Dashboard() {
                   <input
                     type="text"
                     name="chambres"
-                    value={Alldata.chambres}
+                    value={dataUpdate.chambres}
                     onChange={handelchange}
                     placeholder="Enter a street address"
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] h-14 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
@@ -228,7 +229,7 @@ function Dashboard() {
                   <input
                     type="checkbox"
                     name="piscine"
-                    checked={Alldata.piscine}
+                    checked={dataUpdate.piscine}
                     onChange={handelchange}
                     className="form-checkbox h-5 w-5 text-[#f26c0d] border-2 border-[#f26c0d] rounded focus:ring-0"
                   />
@@ -240,7 +241,7 @@ function Dashboard() {
                   <input
                     type="checkbox"
                     name="Bains"
-                    checked={Alldata.Bains}
+                    checked={dataUpdate.Bains}
                     onChange={handelchange}
                     className="form-checkbox h-5 w-5 text-[#f26c0d] border-2 border-[#f26c0d] rounded focus:ring-0"
                   />
@@ -252,7 +253,7 @@ function Dashboard() {
                   <input
                     type="checkbox"
                     name="wifi"
-                    checked={Alldata.wifi}
+                    checked={dataUpdate.wifi}
                     onChange={handelchange}
                     className="form-checkbox h-5 w-5 text-[#f26c0d] border-2 border-[#f26c0d] rounded focus:ring-0"
                   />
@@ -295,7 +296,7 @@ function Dashboard() {
                     type="text"
                     name="price"
                     placeholder="$"
-                    value={Alldata.price}
+                    value={dataUpdate.price}
                     onChange={handelchange}
                     className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#1c130d] focus:outline-0 focus:ring-0 border-2 border-[#f26c0d] bg-white focus:border-[#f26c0d] h-14 placeholder:text-[#9c6c49] p-4 text-base font-normal leading-normal"
                   />
