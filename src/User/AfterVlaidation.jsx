@@ -3,11 +3,15 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
 export default function ReservationConfirmation() {
-    const navigate = useNavigate()
-    const time = 1000000 * 10;
-    useEffect(()=>{
-        setTimeout(navigate('/'),time);
-    },[])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/')
+    }, 100000);
+    return () => clearTimeout(timer); 
+  }, [navigate]);
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md text-center">

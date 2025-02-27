@@ -4,15 +4,14 @@ import { useState, useEffect } from 'react';
 const useIndexedDB = (dbName, storeName) => {
     const [data, setData] = useState([]);
     const [db, setDb] = useState(null);
-    const [isDbReady, setIsDbReady] = useState(false); // حالة لتتبع جاهزية قاعدة البيانات
+    const [isDbReady, setIsDbReady] = useState(false); 
 
     useEffect(() => {
-        const request = indexedDB.open(dbName, 3); // زيادة الإصدار إلى 3
-
+        const request = indexedDB.open(dbName, 3); 
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
 
-            // إنشاء object store جديد إذا لم يكن موجودًا
+            
             if (!db.objectStoreNames.contains(storeName)) {
                 db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
                 console.log(`تم إنشاء الـ object store: ${storeName}`);
@@ -22,7 +21,7 @@ const useIndexedDB = (dbName, storeName) => {
         request.onsuccess = (event) => {
             const db = event.target.result;
             setDb(db);
-            setIsDbReady(true); // قاعدة البيانات جاهزة الآن
+            setIsDbReady(true); 
             console.log('تم فتح قاعدة البيانات بنجاح:', db);
             fetchData(db);
         };
