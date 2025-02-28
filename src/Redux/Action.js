@@ -10,3 +10,9 @@ export const AddDataOrder=(data)=>{
         payload: data
     }
 }
+export const Searching=(data)=>{
+    return {
+        type:'SET_DATA_SEARCHED',
+        payload: data
+    }
+}

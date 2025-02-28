@@ -2,16 +2,38 @@ import React, { useState, useEffect } from 'react'
 import { Search, Menu, Eye } from "lucide-react";
 import { useSelector } from 'react-redux';
 import Card2 from './Card2';
+import { useNavigate } from 'react-router-dom';
 
 function SecendSectioListP() {
   const ListeData = useSelector(state => state.LiteLocatin)
   const [visibilitie, setvisibilitie] = useState(6)
   const [loading, setLoading] = useState(true);
+  const search = localStorage.getItem('search')?.toLowerCase() || '';
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (ListeData.length > 0) {
       setLoading(false);
     }
+  }, [ListeData]);
+
+  let Dataserched = search
+    ? ListeData.filter((items) =>
+        items.title.toLowerCase().includes(search)
+      )
+    : ListeData;
+
+  useEffect(() => {
+    const handlePopState = () => {
+      localStorage.removeItem('search');
+      Dataserched = ListeData;
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, [ListeData]);
 
   return (
@@ -36,7 +58,7 @@ function SecendSectioListP() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {ListeData.slice(0, visibilitie).map((items) => (
+          {Dataserched.slice(0, visibilitie).map((items) => (
             <Card2 key={items.id} items={items} />
           ))}
         </div>
